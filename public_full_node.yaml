@@ -20,7 +20,7 @@ full_node_networks:
       listen_address: "/ip4/0.0.0.0/tcp/6180"
       # Define the upstream peers to connect to
       seeds:
-        # Singapore; provided by @gbossers
+        # Singapore; provided by @no.444
         5de62611458100cec279eaab91d0c37eff4298c0cb7d23016f8d6bfb40680e19:    
           addresses:
             - "/ip4/66.42.60.248/tcp/6180/ln-noise-ik/5de62611458100cec279eaab91d0c37eff4298c0cb7d23016f8d6bfb40680e19/ln-handshake/0"
