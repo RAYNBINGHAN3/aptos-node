@@ -15,6 +15,10 @@ execution:
 full_node_networks:
     - network_id: "public"
       discovery_method: "onchain"
+      identity:
+        type: "from_config"
+        key: "PRK"
+        peer_id: "PeerID"
       # The network must have a listen address to specify protocols. This runs it locally to
       # prevent remote, incoming connections.
       listen_address: "/ip4/0.0.0.0/tcp/6180"
