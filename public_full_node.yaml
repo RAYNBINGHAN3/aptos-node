@@ -1,0 +1,41 @@
+base:
+    # This is the location Aptos will store its database. It is backed by a dedicated docker volume
+    # for persistence.
+    data_dir: "/opt/aptos/data"
+    role: "full_node"
+    waypoint:
+        # This is a checkpoint into the blockchain for added security.
+        from_file: "/opt/aptos/etc/waypoint.txt"
+
+execution:
+    # Path to a genesis transaction. Note, this must be paired with a waypoint. If you update your
+    # waypoint without a corresponding genesis, the file location should be an empty path.
+    genesis_file_location: "/opt/aptos/etc/genesis.blob"
+
+full_node_networks:
+    - network_id: "public"
+      discovery_method: "onchain"
+      identity:
+        type: "from_config"
+        key: "007A32DB73C2E5E856EB22783D76E324256F7708A6EBB4B72883483D3CFA1C6E"
+        peer_id: "5de62611458100cec279eaab91d0c37eff4298c0cb7d23016f8d6bfb40680e19"
+      # The network must have a listen address to specify protocols. This runs it locally to
+      # prevent remote, incoming connections.
+      listen_address: "/ip4/0.0.0.0/tcp/6180"
+      # Define the upstream peers to connect to
+      seeds:
+        # Singapore; provided by @gbossers
+        5de62611458100cec279eaab91d0c37eff4298c0cb7d23016f8d6bfb40680e19:    
+          addresses:
+            - "/ip4/66.42.60.248/tcp/6180/ln-noise-ik/5de62611458100cec279eaab91d0c37eff4298c0cb7d23016f8d6bfb40680e19/ln-handshake/0"
+            role: "Upstream"
+
+debug_interface:
+    admission_control_node_debug_port: 6191
+    address: "0.0.0.0"
+    metrics_server_port: 9101
+    public_metrics_server_port: 9102
+
+api:
+    # This specifies your REST API endpoint. Intentionally on public so that Docker can export it.
+    address: 0.0.0.0:8080
